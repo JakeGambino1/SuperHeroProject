@@ -13,7 +13,8 @@ namespace AnotherSuperHeroProject.Controllers
         // GET: SuperHeroes
         public ActionResult Index()
         {
-            return View();
+            var listOfHeroes = db.SuperHeroes.ToList();
+            return View(listOfHeroes);
         }
 
         // GET: SuperHeroes/Details/5
@@ -58,21 +59,17 @@ namespace AnotherSuperHeroProject.Controllers
         [HttpPost]
         public ActionResult Edit(int id, SuperHero superHero)
         {
-            try
-            {
+
                 // TODO: Add update logic here
-                SuperHero editSuperHero = db.SuperHeroes.Where(s => s.Id == id).SingleOrDefault();
-                editSuperHero.Name = superHero.Name;
-                editSuperHero.PrimaryPower = superHero.PrimaryPower;
-                editSuperHero.SecondaryPower = superHero.SecondaryPower;
-                editSuperHero.Catchphrase = superHero.Catchphrase;
+                SuperHero editSuperHero = db.SuperHeroes.Find(id);
+
+                superHero.Name = editSuperHero.Name;
+                superHero.PrimaryPower = editSuperHero.PrimaryPower;
+                superHero.SecondaryPower = editSuperHero.SecondaryPower;
+                superHero.Catchphrase = editSuperHero.Catchphrase;
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+
         }
 
         // GET: SuperHeroes/Delete/5
@@ -88,8 +85,7 @@ namespace AnotherSuperHeroProject.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-                db.SuperHeroes.Remove(superHero);
+                db.SuperHeroes.Remove(db.SuperHeroes.Find(id));
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
