@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SuperHero.Models;
 
 namespace SuperHero.Controllers
 {
-    public class SuperHeroController : Controller
+    public class SuperHeroesController : Controller
     {
+        
         // GET: SuperHero
         public ActionResult Index()
         {
@@ -17,7 +19,9 @@ namespace SuperHero.Controllers
         // GET: SuperHero/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            ASuperHero superHero = new ASuperHero();
+            ASuperHero superHeroResult = db.SuperHeroes.Where(s => s.Id = id).SingleOrDefault();
+            return View(superHeroResult);
         }
 
         // GET: SuperHero/Create

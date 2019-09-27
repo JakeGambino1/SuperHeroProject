@@ -6,7 +6,7 @@ using System.Web;
 
 namespace SuperHero.Models
 {
-    public class SuperHero
+    public class ASuperHero
     {
         [Key]
         public int Id { get; set; }
@@ -16,7 +16,7 @@ namespace SuperHero.Models
         public string SecondaryPower { get; set; }
         public string Catchphrase { get; set; }
 
-        public SuperHero()
+        public ASuperHero()
         {
 
         }
