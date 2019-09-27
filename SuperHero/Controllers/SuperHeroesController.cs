@@ -9,7 +9,7 @@ namespace SuperHero.Controllers
 {
     public class SuperHeroesController : Controller
     {
-        
+        static ApplicationDbContext db = new ApplicationDbContext();
         // GET: SuperHero
         public ActionResult Index()
         {
@@ -19,25 +19,25 @@ namespace SuperHero.Controllers
         // GET: SuperHero/Details/5
         public ActionResult Details(int id)
         {
-            ASuperHero superHero = new ASuperHero();
-            ASuperHero superHeroResult = db.SuperHeroes.Where(s => s.Id = id).SingleOrDefault();
+            ASuperHero superHeroResult = db.SuperHeroes.Where(s => s.Id == id).SingleOrDefault();
             return View(superHeroResult);
         }
 
         // GET: SuperHero/Create
         public ActionResult Create()
         {
-            return View();
+            ASuperHero newSuperHero = new ASuperHero();
+            return View(newSuperHero);
         }
 
         // POST: SuperHero/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(ASuperHero superHero)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                db.SuperHeroes.Add(superHero);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -49,12 +49,13 @@ namespace SuperHero.Controllers
         // GET: SuperHero/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            ASuperHero editSuperHero = db.SuperHeroes.Where(s => s.Id == id).SingleOrDefault();
+            return View(editSuperHero);
         }
 
         // POST: SuperHero/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, ASuperHero superHero)
         {
             try
             {
@@ -71,16 +72,18 @@ namespace SuperHero.Controllers
         // GET: SuperHero/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            ASuperHero superHero = db.SuperHeroes.Where(s => s.Id == id).SingleOrDefault();
+            return View(superHero);
         }
 
         // POST: SuperHero/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, ASuperHero superHero)
         {
             try
             {
-                // TODO: Add delete logic here
+                db.SuperHeroes.Remove(superHero);
+                db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
