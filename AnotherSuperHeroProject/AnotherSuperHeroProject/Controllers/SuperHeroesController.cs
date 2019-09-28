@@ -62,7 +62,6 @@ namespace AnotherSuperHeroProject.Controllers
 
                 // TODO: Add update logic here
                 SuperHero editSuperHero = db.SuperHeroes.Find(id);
-
                 editSuperHero.Name = superHero.Name;
                 editSuperHero.AlterEgo = superHero.AlterEgo;
                 editSuperHero.PrimaryPower = superHero.PrimaryPower;

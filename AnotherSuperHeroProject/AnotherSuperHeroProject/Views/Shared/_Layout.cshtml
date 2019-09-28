@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cyborg/bootstrap.min.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -24,12 +25,16 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Create", "Create", "SuperHeroes")</li>
+                    <li>@Html.ActionLink("List", "Index", "SuperHeroes")</li>
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container body-content">
+        <img src="https://external-preview.redd.it/_arljVVo3Opmhd2MW3o-SVD08VwWzp0sEVGI2HcreS4.jpg?auto=webp&s=761522988fcd608e3342e6edd7f0cd72eaf0340d" alt="Alternate Text" />
         @RenderBody()
         <hr />
         <footer>
