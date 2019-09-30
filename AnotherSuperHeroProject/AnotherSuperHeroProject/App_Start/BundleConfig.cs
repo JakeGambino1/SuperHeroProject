@@ -23,7 +23,7 @@ namespace AnotherSuperHeroProject
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-cyborg-3.css",
                       "~/Content/site.css"));
         }
     }
