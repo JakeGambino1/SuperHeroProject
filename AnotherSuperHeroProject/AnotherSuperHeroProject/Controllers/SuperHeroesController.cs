@@ -76,7 +76,7 @@ namespace AnotherSuperHeroProject.Controllers
         public ActionResult Delete(int id)
         {
             SuperHero superHero = db.SuperHeroes.Where(s => s.Id == id).SingleOrDefault();
-            return View();
+            return View(superHero);
         }
 
         // POST: SuperHeroes/Delete/5
